@@ -1,4 +1,4 @@
-# Flexrn::Uam
+# UAMiR
 
 This gem provides an interface to the Universal Assignment Manager associated with API Healthcare's Contingent Staffing/Recruiting Solution.
 
@@ -7,7 +7,7 @@ This gem provides an interface to the Universal Assignment Manager associated wi
 
 Add this line to your application's Gemfile:
 
-    gem 'flexrn-uam'
+    gem 'uamir'
 
 And then execute:
 
@@ -15,7 +15,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install flexrn-uam
+    $ gem install uamir
 
 
 ## Recruiting Solution Documents, UAM Requests, and Admin information
@@ -74,7 +74,7 @@ TODO: Example
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/flexrn-uam/fork )
+1. Fork it ( https://github.com/[my-github-username]/uamir/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

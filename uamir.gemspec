@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'flexrn/uam/version'
+require 'uamir/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "flexrn-uam"
-  spec.version       = Flexrn::Uam::VERSION
+  spec.name          = "uamir"
+  spec.version       = UAMiR::VERSION
   spec.authors       = ["Christopher Hunt"]
   spec.email         = ["chrahunt@gmail.com"]
   spec.summary       = %q{This gem provides a programmatic interface to the Universal Assignment Manager associated with API Healthcare's Contingent Staffing/Recruiting Solution.}
