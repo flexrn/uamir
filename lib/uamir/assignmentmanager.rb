@@ -11,7 +11,7 @@ module UAMiR
     class ActionError < StandardError; end
     class RequestError < StandardError; end
 
-    # TODO: Explanation
+    # Initialize an Assignment Manager, which ov
     #
     # @param  rss_url  [String]  the sitename of the Recruiting Solution product.
     # @param  tss_url  [String]  the sitename of the Contingent Staffing product.
@@ -35,6 +35,11 @@ module UAMiR
     end
     
     # Assign document given the user id, document id, document type, and version id (optional).
+    #
+    # @param  rss_user_id  [String, Integer]  the id of the candidate
+    #   to assign the document to.
+    # @param  rss_doc_id  [String, Integer]  the id of the document to assign.
+    # @param  type  [String]  the type of the document
     def assign_document(rss_user_id, rss_doc_id, type, vers_id = 0)
       action = 'assign'
 

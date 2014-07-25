@@ -22,12 +22,22 @@ Or install it yourself as:
 
 Before using most of the features of the assignment manager you have to understand the anatomy of a Recruiting Solution document.
 
-Recruiting solution documents have several fields roughly described by the following
-TODO: Describe document format
+Recruiting solution **documents** have several fields roughly described by the following:
 
-A request is any document that has been assigned; this is equivalent to the items already present in the assignment manager.
+* *name*: the name of the document as it appears in Recruiting Solution.
+* *rsscredid*: the unique id of the document.
+* *type*: the type of the document. May be one of:
+  * *Skills*: skills checklist
+  * *Docs*: documents that have been added by the company
+  * *Tests*: online tests
+* *versionid*: the version number; seems only to apply to tests.
 
-The request has several fields
+Don't rely on the name to uniquely identify a document, as it's possible to delete and create another document with the same name.
+
+A **request** is any document that has been assigned; this is equivalent to the items already present in the assignment manager, and corresponds to the values present in the returned hashes from UAMiR::AssignmentManager#get_assigned_documents.
+
+The request has several fields:
+
 * *adminusername*: the username of the individual that initially created the request. 
 * *assigned*: boolean, 1 or 0. For existing assignments this is always 1.
 * *assignedby*: username of user that assigned the document.
@@ -47,10 +57,16 @@ The request has several fields
 ## Usage
 
 ### Initializing client
-TODO: Explanation of initialization arguments, site name, rss site name, etc.
-TODO: Example
 
-The Universal Assignment Manager allows the following actions:
+To make an assignment you need the Recruiting Solution and Contingent Staffing sitenames for the company, along with the id of an administrative user with privilege to assign documents.
+
+    # Subsititute the values below with your own
+    RSSURL = 'rss_sitename'
+    TSSURL = 'tss_sitename'
+    RSSUSERID = 0
+
+    client = UAMiR::AssignmentManager.new(RSSURL, TSSURL, RSSUSERID)
+
 ### Document assignment
 
 TODO: Explanation
@@ -58,8 +74,13 @@ TODO: Example
 
 ### Retrieve documents assigned
 
-TODO: Explanation
-TODO: Example
+You can retrieve an array of hashes (as described in the requests above) using the UAMiR::AssignmentManager#get_assigned_documents method. The `candidate_id` is the id corresponding to the candidate in Recruiting Solution. For an individual this can be retrieved from the URL of the candidate page in Recruiting Solution. Retrieval:
+
+    client = UAMiR::AssignmentManager.new(RSSURL, TSSURL, RSSUSERID)
+    candidate_id = 2000
+    docs = client.get_assigned_documents(candidate_id)
+
+which will return an array of hashes with string keys representing the assignments made to an individual.
 
 ### Request reminders
 
