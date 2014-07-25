@@ -25,14 +25,14 @@ Before using most of the features of the assignment manager you have to understa
 Recruiting solution **documents** have several fields roughly described by the following:
 
 * *name*: the name of the document as it appears in Recruiting Solution.
-* *rsscredid*: the unique id of the document.
+* *rsscredid*: the id of the document, unique within each type.
 * *type*: the type of the document. May be one of:
   * *Skills*: skills checklist
   * *Docs*: documents that have been added by the company
   * *Tests*: online tests
 * *versionid*: the version number; seems only to apply to tests.
 
-Don't rely on the name to uniquely identify a document, as it's possible to delete and create another document with the same name.
+Neither the Name nor rsscredid to uniquely identify a document. The combination of rsscredid and type should be unique.
 
 A **request** is any document that has been assigned; this is equivalent to the items already present in the assignment manager, and corresponds to the values present in the returned hashes from UAMiR::AssignmentManager#get_assigned_documents.
 
@@ -69,8 +69,24 @@ To make an assignment you need the Recruiting Solution and Contingent Staffing s
 
 ### Document assignment
 
-TODO: Explanation
-TODO: Example
+You can assign a document to a candidate given their id and the document information.
+
+    client = UAMiR::AssignmentManager.new(RSSURL, TSSURL, RSSUSERID)
+    candidate_id = 2000
+    example_document = {
+      id: 100,
+      type: "Docs"
+    }
+    client.assign_document(candidate_id, example_document[:id], example_document[:type])
+    
+    example_test = {
+      id: 50,
+      type: "Tests",
+      vers: "289"
+    }
+    client.assign_document(candidate_id, example_test[:id], example_test[:type], example_test[:vers])
+
+The actual document information to use is company-account specific, at least for the non-test, non-skills checklist items. You may be able to retrieve this information using the UAM in Contingent Staffing or Recruiting Solution by either examining the source of the page after the UAM has loaded, or by examining the requests sent when the UAM is opened.
 
 ### Retrieve documents assigned
 
