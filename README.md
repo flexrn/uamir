@@ -1,4 +1,4 @@
-# UAMiR (**U**niversal **A**ssignment **M**anager in **R**uby)
+# UAMiR (Universal Assignment Manager in Ruby)
 
 This gem provides an interface to the Universal Assignment Manager associated with API Healthcare's Contingent Staffing/Recruiting Solution.
 
